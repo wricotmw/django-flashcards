@@ -17,7 +17,7 @@ def add(request):
 		old_num2 = request.POST['old_num2']
 
 		
-		#error handling for no form entry		
+		#error handling for no form entry !		
 		if not answer:
 			my_answer = "Enter a number"
 			color = "danger"
