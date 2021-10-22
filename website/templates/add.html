@@ -1,7 +1,38 @@
 {% extends 'base.html' %}
 
 {% block 'content' %}
-  
-    <h1>add!</h1>
+ <center> 
+{% if my_answer %}
+  <div class="alert alert-{{color}} alert-dismissible fade show" role="alert">
+  <strong>{{ my_answer }}</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+{% endif %}
+
+
+    <br>
+    <h1><img src="static/images/{{ num1 }}.png">  +  <img src="static/images/{{ num2 }}.png"></h1>
+    
+    <br><br>
+
+<form action=" {% url 'add' %} " method="POST">
+  <! form action calls  function in views !>
+  {% csrf_token %} <! anti hacker !>
+  <div class="mb-3">
+    
+    <input type="text" class="form-control" placeholder="Type your answer here" name="answer">
+    
+    <input type="hidden"  name="old_num1" value="{{ num1 }}">
+    
+    <input type="hidden"  name="old_num2" value="{{ num2 }}" >
+    
+
+  </div>
+  <br>
+  <! submit button submits form !>
+  <button type="submit" class="btn btn-secondary">Submit</button>
+</form>
+</center>
 
 {% endblock %}  
